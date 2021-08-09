@@ -6,5 +6,5 @@ export const sortPopupItems = [
 
 export const categoryItems = ["Мясные", "Вегетарианская", "Острые", "Гриль", "Закрытые"];
 
-export const availableNames = ["тонкое", "традиционное"];
+export const availableTypes = ["тонкое", "традиционное"];
 export const availableSizes = [26, 30, 40];
