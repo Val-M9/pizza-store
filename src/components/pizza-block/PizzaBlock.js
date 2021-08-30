@@ -5,7 +5,16 @@ import classNames from "classnames";
 import { availableTypes, availableSizes } from "../../assets/constants/constants";
 import Button from "../Button";
 
-export default function PizzaBlock({ id, name, imageUrl, price, types, sizes, onAddPizza }) {
+export default function PizzaBlock({
+  id,
+  name,
+  imageUrl,
+  price,
+  types,
+  sizes,
+  onAddPizza,
+  addedCount,
+}) {
   const [activeType, setActiveType] = useState(types[0]);
   const [activeSize, setActiveSize] = useState(0);
 
@@ -74,7 +83,7 @@ export default function PizzaBlock({ id, name, imageUrl, price, types, sizes, on
             />
           </svg>
           <span>Добавить</span>
-          <i>2</i>
+          {addedCount && <i>{addedCount}</i>}
         </Button>
       </div>
     </div>
@@ -88,6 +97,7 @@ PizzaBlock.propTypes = {
   types: PropTypes.arrayOf(PropTypes.number).isRequired,
   sizes: PropTypes.arrayOf(PropTypes.number).isRequired,
   onUpdateCart: PropTypes.func,
+  addedCount: PropTypes.number,
 };
 PizzaBlock.defaultProps = {
   name: "Name",
