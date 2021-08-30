@@ -14,7 +14,7 @@ export default function Home() {
       isLoaded: pizzas.isLoaded,
     };
   });
-
+  const cartItems = useSelector(({ cart }) => cart.items);
   const { category, sortBy } = useSelector(({ filters }) => filters);
   const dispatch = useDispatch();
 
@@ -59,7 +59,12 @@ export default function Home() {
         {isLoaded
           ? pizzas &&
             pizzas.map((pizza) => (
-              <PizzaBlock onAddPizza={handleAddPizzaToCart} key={pizza.id} {...pizza} />
+              <PizzaBlock
+                onAddPizza={handleAddPizzaToCart}
+                key={pizza.id}
+                addedCount={cartItems[pizza.id] && cartItems[pizza.id].items.length}
+                {...pizza}
+              />
             ))
           : Array(12)
               .fill(0)
